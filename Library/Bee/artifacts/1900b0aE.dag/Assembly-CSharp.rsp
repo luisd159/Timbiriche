@@ -339,10 +339,13 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/VSSettingsProvider.ref.dll"
 "Assets/Scripts/BoardManager.cs"
+"Assets/Scripts/Button.cs"
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/Line.cs"
+"Assets/Scripts/MainPanel.cs"
 "Assets/Scripts/Point.cs"
 "Assets/Scripts/Square.cs"
+"Assets/Scripts/Tamaño.cs"
 -langversion:8.0
 
 /deterministic

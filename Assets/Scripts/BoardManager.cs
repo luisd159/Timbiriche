@@ -1,30 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BoardManager : MonoBehaviour
 {
     public static BoardManager Instance;
-    public int Width = 4;
-    public int Heigth = 4;
+    public Slider tamaño;
+    public int Width;
+    public int Heigth;
     public Point PointPrefab;
     public Line LinePrefab;
     public Square SquarePrefab;
-    public List<Line> Lines;
-    public List<Square> Squares;
-    Square s;
+    public List<Line> Lines = new List<Line>();
+    public List<Square> Squares = new List<Square>();
 
     public void Awake()
     {
         Instance = this;
+        Width = PlayerPrefs.GetInt("tamaño");
+        Heigth = PlayerPrefs.GetInt("tamaño");
     }
 
     void Start()
     {
         GenerateBoard();
+        CheckBox();
     }
 
-    private void GenerateBoard()
+
+    public void GenerateBoard()
     {
         for (int i = 0; i < Heigth; i++) // Dibujar Puntos
         {
@@ -57,25 +63,29 @@ public class BoardManager : MonoBehaviour
         {
             for (int j = 0; j < Width - 1; j++)
             {
-                s = Instantiate(SquarePrefab, new Vector2(j + 0.5f, i + 0.5f), Quaternion.identity);
+                Square s = Instantiate(SquarePrefab, new Vector2(j + 0.5f, i + 0.5f), Quaternion.identity);
                 s.addLines(Lines);
+                Squares.Add(s);
             }
         }
-
     }
 
-    public void CheckSquare()
+    
+
+    public void CheckBox()
     {
-        //bool a = s.LinesSquare[0].Coloreado && s.LinesSquare[1].Coloreado && s.LinesSquare[2].Coloreado && s.LinesSquare[3].Coloreado;
-        for (int i = 0; i < s; i++)
+        foreach (Square s in Squares)
         {
-            if (s[1].LinesSquare[0].Coloreado && s[i].LinesSquare[1].Coloreado && s[i].LinesSquare[2].Coloreado && s[i].LinesSquare[3].Coloreado == true)
+            if (s.Completed() == true)
             {
-                break;
+                Debug.Log("SE PUEDE PINTAR");
             }
         }
-        
     }
+
+
+
+    
  
     public void SetLine(Line l)
     {

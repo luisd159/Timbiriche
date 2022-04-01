@@ -46,6 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Inner: {fileID: 8023144277666027689}
+  square: {fileID: 8038536241460310059, guid: 7a4136ef76a8ebd458c5031a16c6f242, type: 3}
+  Position: {x: 0, y: 0}
+  Coloreado: 0
 --- !u!70 &4931581252145137073
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
